@@ -1,0 +1,61 @@
+Configurar o editor Visual Studio para que o padrão de
+identação de fonte da equipe seja a mesma
+
+-------------------------- CONFIGURAR/INSTALAR EDITOR CONFIG --------------------------
+
+Passo 1: Criar um arquivo na raiz do projeto com o nome de ".editorconfig" e digitar
+as seguintes instruções:
+
+		root = true;
+
+		[*] # o sinal de * indica que as configurações abaixo serão para todos os tipos de arquivo
+		indent_style = space
+		indent_size = 2
+		charset = utf-8
+		trim_trailing_whitespace = true # Remove os espaços em branco que estão depois do da linha
+		insert_final_newline = true
+		
+Passo 2: Instalar a extenção do editor config no seu visual studio. Basta digitar na tab
+de extenções: "EditorConfig for VS Code", logo após, reenicie seu visual studio e a instalação
+estara pronta.
+
+-------------------------- INSTALAR/CONFIGURAR ESLINT E PRETTIER --------------------------
+
+ESLINT: Avisa o desenvolvedor de erros de guia de estilo de fonte, ou seja, se configurado no projeto
+para usar somente aspas simples e o programador usar aspas duplas o ESLINT vai dar um warning no código
+wescrito avisando o Dev.
+
+PRETTIER: O prettier ira formatar o fonte, ou seja, ao contrário do ESLINT que acusa o erro, o prettier
+corrige os erros de padronização do fonte quando damos um "Ctrl + S".
+
+Passo 1: Ir na tab de extenções e instalar as duas extenções que estão com os seguintes
+nomes: "ESLint" e "Prettier Code formatter".
+
+Passo 2: Instalar o pacote do ESLint pelo yarn.
+	yarn add eslint -D | npm install eslint --dev
+	
+Passo 3: Apóes instalar o Eslint. Abrir o terminal na raiz do projeto e realizar o seguinte comando:
+	npx eslint --init // ESTE COMANDO IRA CRIAR O ARQUIVO DE CONFIGURAÇÃO DO ESLINT
+	- Ao darmos ENTER no comando acima o terminal mostrara 3 opções de estilização de fonte ou style guide. 
+	Vamos escolher a "Standard".
+	- Logo após, devemos selecionar a opção de formato de arquivo, vamos selecioanr "JSON".
+	- Logo após o ESLint vai perguntar se queremos instalar as demais dependências. Digitamos no
+	terminal "Y" que significa "Sim".
+	- O único problema que aconcetecerá é se estivermos usando o gerenciador de pacotes yarn ao invés do npm.
+	Então se vc esta usando o npm, este tópico você não precisa realizar. Porém, se estiver usando o yarn saiba
+	que quando damos o comando "npx eslint --init", caso, o projeto ainda não tenha o arquivo "package-lock.json" criado
+	o npm ira criar este arquivo, mas, como estamos usando o yarn para evitarmos problemas futuros de imcompatibilidade
+	dos packages ao baixarmos os mesmos (quando baixamos o repositório do Git) devemos criar o arquivo "yarn.lock". Assim,
+	basta excluir o arquivo "package-lock.json" e no terminal digitar o comando "yarn".
+	
+	Obs: Caso o não esteja aparecendo os erros de estilização do seu fonte basta reinicializar o seu visual studio que ira
+	funcionar.
+
+Passo 4: Caso tenhamos um arquivo js razoavelmente grande (30 a 40 linhas) ficará trabalhoso corrigir estes warnings do
+ESLint na "unha". Para isso, devemos configurar agora o Prettier, ele, ira fazer todo este processo automaticamente
+com apenas um comando "mágico", o "Ctrl S". Para configurarmos devemos abrir o arquivo de settings do vs code.
+	- Com o comando "Ctrl + Shift + P" ira abrir um campo de pesquisa e ndele digitamos "Open Settings (JSON)".
+	- Com o arquivo aberto editaremos a propriedade "prettier.eslintIntegration" e colocamos o valor "true", logo após,
+	editamos a propriedade "editor.formatOnSave" e colocamos o valor de "true".
+	
+E pronto, seu projeto esta configurado para suportar sua style guide.
