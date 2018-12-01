@@ -13,8 +13,16 @@ nunjucks.configure('views', {
 // Sets the extensions for nunjucks files to be "njk"
 app.set('view engine', 'njk')
 
+const users = ["John", "Harvey", "Mike"]
+
+// Users listing
 app.get('/', (req, res) => {
-    res.render(`list`, { name: 'Aléfe' })
+    res.render(`list`, { users })
+})
+
+// Create new user
+app.get('/new', (req, res) => {
+    return res.render('new')
 })
 
 app.listen(3000)
