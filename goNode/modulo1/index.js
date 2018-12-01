@@ -1,49 +1,20 @@
 const http = require('http')
 const express = require('express')
+const nunjucks = require('nunjucks')
 
 const app = express()
 
-const logMiddleware = (req, res, next) => {
-    console.log(
-        `HOST: ${req.headers.host} | URL: ${req.url} | METHOD: ${req.method}`
-    )
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app,
+    watch: true
+})
 
-    req.appName = 'Module1'  
-
-    next()
-}
-
-// All routes used this middleware
-app.use(logMiddleware)
+// Sets the extensions for nunjucks files to be "njk"
+app.set('view engine', 'njk')
 
 app.get('/', (req, res) => {
-    res.send(`Welcome. The name this app is ${req.appName}`)
-})
-
-// Request: http://localhost:3000/name/Alefe
-// Response: Welcome Alefe
-app.get('/name/:name', (req, res) => {
-    return res.send(`Welcone ${req.params.name}`)
-})
-
-// Request: http://localhost:3000/age?age=20
-// Response: Your are 20 years old
-app.get('/age', (req, res) => {
-    return res.send(`Your are ${req.query.age} years old`)
-})
-
-// Request: http://localhost:3000/users
-// Response: [{"name":"John","age":21},{"name":"Alice","age":20}]
-app.get('/users', (req, res) => {
-    return res.json([
-        {
-            name: 'John',
-            age: 21
-        }, {
-            name: 'Alice',
-            age: 20
-        }
-    ])
+    res.render(`list`, { name: 'Aléfe' })
 })
 
 app.listen(3000)
