@@ -1,0 +1,70 @@
+-------------------------- CONFIGURAR TEMA/ESTILO E FONTE --------------------------
+Passo 1: Instalar as seguintes extenções:
+	- Color Highlight: Esse plugin mostra a cor exata de todos RGB’s ou HEX em seu código, muito útil para quem trabalha com CSS ou SASS.
+    - DotEnv: Plugin que utilizo para ter suporte à sintaxe .env, muito útil para quem trabalha com NodeJS, ReactJS ou qualquer outro tipo de projeto web.
+	- Dracula Official: Tema que utilizo no meu VSCode e em todos outros editores/terminais, pra mim foi o tema que mais me agradou durante mais tempo e 
+	olha que já usei muitos.
+	- Markdown All in One: Plugin que utilizo para escrever e ler Markdown dentro do VSCode, muito útil para documentações o README’s do Github.
+	- Material Icon Theme: Utilizo para exibir os ícones de acordo com a linguagem utilizada na minha sidebar. Fica muito legal mesmo pois esse 
+	plugin identifica a grande parte de libs e ferramentas.
+	
+Passo 2: Condigurações. Abra seu arquivo de configurações do visual studio com o seguinte comando "Ctrl + Shift + P" e digite "Open Settings (JSON)" 
+e realize as seguintes configurações.
+
+	// Define o tema do VSCode
+	"workbench.colorTheme":"Dracula",
+
+	// Configura tamanho e família da fonte
+	"editor.fontSize":16,
+	"editor.lineHeight":24,
+	"editor.fontFamily":"Fira Code",
+	"editor.fontLigatures":true,
+
+	// Aplica linhas verticais para lembrar de quebrar linha em códigos muito grandes
+	"editor.rulers": [
+		80,
+		120
+	],
+
+	// Aplica um sinal visual na esquerda da linha selecionada
+	"editor.renderLineHighlight":"gutter",
+
+	// Aumenta a fonte do terminal
+	"terminal.integrated.fontSize":14,
+
+	// Define o tema dos ícones na sidebar
+	"workbench.iconTheme":"material-icon-theme"
+	
+Obs: Caso não tenha a fonte "Fira Code" instalado na sua máquina a fonte do vs code vai ficar estranha. Para corrigir
+e deixar tudo certo basta baixar a fonte no seguinte link: https://www.fontsquirrel.com/fonts/fira-code ou com o
+chocolatey (se tiver o mesmo instalado em sua máquina, o chocolatey é um gerenciador de pacotes do windows) com o 
+seguinte comando: "choco install firacode".
+
+E pronto seu Visual Studio esta configurado.
+
+Referências: https://blog.rocketseat.com.br/ambiente-desenvolvimento-javascript/
+
+
+-------------------------- CONFIGURAR PODER MODE --------------------------
+	
+	Quando utilizamos esta extenção e digitamos alguma coisa em um arquivo o visual studio
+cria alguns efeitos durante a escrita.
+
+Passo 1: Ir na tab de extenções do visual studio e baixar a extenção que esta com o seguinte nome:
+"Power Mode", logo após, devemos realizar as seguintes configurações para que os efeitos possam
+acontecer:
+
+	"powermode.enabled": true,
+	"powermode.presets": "flames" // Pode ser flames ou outro efeito que preferir.
+	
+-------------------------- LIVE SERVER --------------------------
+
+O live server permite programar em html e cada vez que o arquivo for salvo no vs code o live server atualiza a página
+no navegador.
+
+
+Para instalar basta digitar na tab de extenções do vs code "Live Server".
+
+Como usar: Basta ler a documentação, esta bem mastigada.
+
+Link do Git da extenção: https://github.com/ritwickdey/vscode-live-server/blob/master/docs/settings.md
