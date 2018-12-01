@@ -3,8 +3,8 @@ Projects Node js.
 *********** Configuração Editor Config ***********
 
 Passo 1: Na tab de extenssões instale o plugin do editor config com
-o seguinte texto: "EditorConfig for VS Code"
-Passo 2: Cria na raiz do projeto um arquivo com o nome ".editorconfig"
+o seguinte texto: "EditorConfig for VS Code".
+Passo 2: Cria na raiz do projeto um arquivo com o nome ".editorconfig".
 Passo 3: coloque no arquivo o código abaixo:
 
     root = true;
