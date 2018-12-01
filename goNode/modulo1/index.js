@@ -3,8 +3,21 @@ const express = require('express')
 
 const app = express()
 
+const logMiddleware = (req, res, next) => {
+    console.log(
+        `HOST: ${req.headers.host} | URL: ${req.url} | METHOD: ${req.method}`
+    )
+
+    req.appName = 'Module1'  
+
+    next()
+}
+
+// All routes used this middleware
+app.use(logMiddleware)
+
 app.get('/', (req, res) => {
-    res.send('Hello Word with Express')
+    res.send(`Welcome. The name this app is ${req.appName}`)
 })
 
 // Request: http://localhost:3000/name/Alefe
