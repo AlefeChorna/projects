@@ -1,24 +1,6 @@
 Configurar o editor Visual Studio para que o padrão de
 identação de fonte da equipe seja a mesma
 
--------------------------- CONFIGURAR/INSTALAR EDITOR CONFIG --------------------------
-
-Passo 1: Criar um arquivo na raiz do projeto com o nome de ".editorconfig" e digitar
-as seguintes instruções:
-
-		root = true;
-
-		[*] # o sinal de * indica que as configurações abaixo serão para todos os tipos de arquivo
-		indent_style = space
-		indent_size = 2
-		charset = utf-8
-		trim_trailing_whitespace = true # Remove os espaços em branco que estão depois do da linha
-		insert_final_newline = true
-		
-Passo 2: Instalar a extenção do editor config no seu visual studio. Basta digitar na tab
-de extenções: "EditorConfig for VS Code", logo após, reenicie seu visual studio e a instalação
-estara pronta.
-
 -------------------------- INSTALAR/CONFIGURAR ESLINT E PRETTIER --------------------------
 
 ESLINT: Avisa o desenvolvedor de erros de guia de estilo de fonte, ou seja, se configurado no projeto
