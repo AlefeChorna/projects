@@ -20,9 +20,9 @@ class App {
 
   views () {
     nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
-      autoescape: this.isDev,
+      autoescape: true,
       express: this.express,
-      watch: true
+      watch: this.isDev
     })
 
     this.express.set('view engine', 'njk')
