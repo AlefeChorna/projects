@@ -1,6 +1,6 @@
 Projects Node js.
 
-*********** Configuração Editor Config ***********
+\***\*\*\*\*\*\*** Configuração Editor Config \***\*\*\*\*\*\***
 
 Passo 1: Na tab de extenssões instale o plugin do editor config com
 o seguinte texto: "EditorConfig for VS Code".
@@ -18,4 +18,11 @@ Passo 3: coloque no arquivo o código abaixo:
     # da linha
     insert_final_newline = true
 
-*************************************************
+---
+
+Para usar código do nunjucks e html nos arquivos ".njk" adiciona
+o seguinte comand on oarquivo "Open Settings JSON" do vscode
+
+"emmet.includeLanguages": {
+"nunjucks": "html"
+}

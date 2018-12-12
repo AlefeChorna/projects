@@ -1,0 +1,10 @@
+root = true;
+
+[*] # o sinal de * indica que as configurações abaixo
+# serão para todos os tipos de arquivo
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true # Remove os espaços em branco que estão depois do
+# da linha
+insert_final_newline = true
