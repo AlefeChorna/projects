@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Resizable - Snap to grid</title>
+  <link rel="stylesheet" href="jquery/jquery-ui.css">
+  <style>
+    #root { border: 1px solid blue; height: 500px; background: #fffff2 }
+
+    #resizable { position: absolute; width: 150px; height: 150px; padding: 0.5em; }
+    #resizable h3 { text-align: center; margin: 0; }
+
+    #resizable2 { position: absolute; width: 150px; height: 150px; padding: 0.5em; }
+    #resizable2 h3 { text-align: center; margin: 0; }
+
+    .ui-resizable-helper {
+      position: relative;
+      border: 1px solid red; 
+      position: absolute;
+    }
+
+    .ui-icon-none { display: none !important; }
+
+    .red-cursor {
+      color:red; 
+      font-size:40px;
+      cursor: url('./jquery/images/cursor.svg'), auto;
+    }
+
+    #btnGridTeste {
+      position: fixed;
+      bottom: 300px;
+      left: 300px; 
+    }
+
+    #btnGridTeste2 {
+      position: fixed;
+      bottom: 300px;
+      left: 500px; 
+    }
+
+    icon-chevron-up {
+      color: blue
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#resizable" ).resizable({ 
+      containment: "#root",
+      minWidth: 150,
+      minHeight: 150,
+      handles: "n, e, s, w, ne, se, sw, nw",
+      classes: {
+        "ui-resizable-se": "ui-resizable-handle ui-resizable-se"
+      }
+    });
+    $( "#resizable" ).draggable({
+      scroll: true,
+      containment: "#root",
+      opacity: 0.50
+    })
+  } );
+
+    $( function() {
+    $( "#resizable2" ).resizable({ 
+      containment: "#root",
+      minWidth: 150,
+      minHeight: 150,
+      handles: "n, e, s, w, ne, se, sw, nw",
+      classes: {
+        "ui-resizable-se": "ui-resizable-handle ui-resizable-se"
+      }
+    });
+    $( "#resizable2" ).draggable({
+      scroll: true,
+      containment: "#root",
+      opacity: 0.50
+    })
+  } );
+  </script>
+</head>
+<body>
+
+<div id="root">
+
+  <div id="resizable" class="ui-widget-content divGridTeste">
+    <h3 class="ui-widget-header">Grid Teste</h3>
+  </div>
+
+  <div id="resizable2" class="ui-widget-content divGridTeste2">
+    <h3 class="ui-widget-header">Grid Teste 2</h3>
+  </div>
+
+  <button id="btnGridTeste">Minimize/Maximize Grid Teste</button>
+  <button id="btnGridTeste2">Minimize/Maximize Grid Teste 2</button>
+</div>
+
+ <script>
+
+  function maxZIndex() {
+      var divs = document.getElementsByTagName('div');
+      var highest = 0;
+      for (var i = 0; i < divs .length; i++) {
+          var zindex = divs[i].style.zIndex;
+          if (parseInt(zindex) > parseInt(highest)) {
+              highest = zindex;
+          }
+      }
+      document.lastZIndex = parseInt(highest) + 1;
+      return highest;
+  }
+
+  var resizable = document.querySelector("#resizable");
+  resizable.addEventListener('mousedown', function() {
+    console.log("resizable zIndex: ", parseInt(maxZIndex()) + 1)
+    resizable.style.zIndex = parseInt(maxZIndex()) + 1;
+  });
+
+  var resizable2 = document.querySelector("#resizable2"); 
+  resizable2.addEventListener('mousedown', function() {
+    console.log("resizable2 zIndex: ", parseInt(maxZIndex())  + 1)
+    resizable2.style.zIndex = parseInt(maxZIndex())  + 1;
+  });
+
+  $("#btnGridTeste").click(function() {
+    var resizable = document.querySelector("#resizable");
+    var zIndexAnterior = resizable.style.zIndex;
+    var novoZIndex = parseInt(maxZIndex());
+    resizable.style.zIndex = novoZIndex + 1;
+
+    if ((parseInt(document.lastZIndex) === parseInt(resizable.style.zIndex) &&
+        parseInt(zIndexAnterior) === parseInt(novoZIndex)) ||
+        !resizable.offsetParent
+    ) {
+      $(this).toggleClass("divGridTeste");
+      $("#resizable").toggle("size");
+    }
+  });
+
+  $("#btnGridTeste2").click(function() {
+    var resizable2 = document.querySelector("#resizable2");
+    var zIndexAnterior = resizable2.style.zIndex;
+    var novoZIndex = parseInt(maxZIndex());
+    resizable2.style.zIndex = novoZIndex + 1;
+
+    if ((parseInt(document.lastZIndex) === parseInt(resizable2.style.zIndex) &&
+        parseInt(zIndexAnterior) === parseInt(novoZIndex)) ||
+        !resizable2.offsetParent
+    ) {
+      $(this).toggleClass("divGridTeste2");
+      $("#resizable2").toggle("size");
+    }
+  });
+
+ </script>
+</body>
+</html>
