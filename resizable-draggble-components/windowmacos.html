@@ -193,7 +193,7 @@
 <div id="window" class="window ui-widget-content">
   <div class="titlebar" style="cursor:all-scroll">
     <div class="buttons" style="height: 20px;cursor:auto;">
-      <div class="close">
+      <div class="close" id="close">
         <a class="closebutton" href="#"><span><strong>x</strong></span></a>
         <!-- close button link -->
       </div>
@@ -230,17 +230,29 @@
             ) {
                 windownMain.alturaOriginal = windownMain.offsetHeight;
                 windownMain.larguraOriginal = windownMain.offsetWidth;
+                windownMain.topOriginal = windownMain.offsetTop;
+                windownMain.leftOriginal = windownMain.offsetLeft;
             }
 
             windownMain.style.width = root.offsetWidth + 'px';
             windownMain.style.height = root.offsetHeight + 'px';
+            windownMain.style.top = 9 + 'px';
+            windownMain.style.left = 9 + 'px';
 
             windownMain.alterouMedidas = true;
         } else {
             windownMain.style.width = windownMain.larguraOriginal + 'px';
             windownMain.style.height = windownMain.alturaOriginal + 'px';
+            windownMain.style.top = windownMain.topOriginal + 'px';
+            windownMain.style.left = windownMain.leftOriginal + 'px';
+
             windownMain.alterouMedidas = false;
         }
+    });
+
+    var close = document.querySelector("#close");
+    close.addEventListener('click', function() {
+        $("#window").remove();
     });
 </script>
 </body>
