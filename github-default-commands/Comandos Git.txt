@@ -1,0 +1,323 @@
+Para transformar uma pasta em um repositório do Git usa-se a seguitne sintaxe.
+ - git init
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para saber se o Git esta controlando um determinado arquivo usa-se o seguinte comando.
+ - git-ls-files
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para saber os status de um repositório, ou seja, como ele esta no exato momento usa-se a seguinte sintaxe.
+ - git status
+ - Os arquivos que ainda não foram commitados ele mostra como "Untracked files" (são os arquivos de cor vermelha)
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para incluir um arquivo ao 'controle de versão' do git usa-se a seguinte sintaxe (esta comando apenas adiciona, para salva-lo no diretório tem que fazer  o commit)
+ - git add + 'nome_arquivo'
+ - git add index.html
+ - Para adicionar um ou mais.
+ - git add arquivo_1 arquivo_2
+ - Para adicinar varios arquivos de uma vez usa-se o seguinte comando.
+ - git add *
+ - para saber todas as funcionalidades do 'add' usa-se a seguinte sintaxe.
+ - git add -i
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para gravar as alterações no repositório após realizar o 'git add' usa-se a seguinte sintaxe.
+ - git commit -m 'Descrição do Commit. O pq de gravar o arquivo'.
+ - git commit -m 'Criando projeto CursoGitAlura'.
+ - A opção 'git commit -a' inclui imediatamente no commit todos os arquivos modificados ou removidos! Porém, ela não adiciona os arquivos novos. 
+ - Podemos combinar a opção de mensagem com git commit -a -m 'Mensagem de commit' para não precisar escrever a mensagem no editor padrão do console.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para informar ao Git quem esta fazendo as alterações no projeto usa-se a seguinte sintaxe.
+ - O comando 'gloval' detém a configuração para o computador inteiro, ou seja, todas as alterações a partir desta não precisam mais de
+usuário. Neste caso como queremos apenas no repositório que estamos não usamos a opção 'global'
+ - git config --global user.name "seu_nome"
+ - Neste caso como queremos apenas no repositório que estamos não usamos a opção 'global'
+ - git config usar.name "Alefe Chorna"
+ - Para informar o e-mail usa-se a seuinte sintaxe.
+ - git config user.email "seu@email"
+ - git config user.email "alefechorna99@gmail.com"
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Os três estados de um repositório com os quais interagimos ao realizar o fluxo de controle com o Git são.
+ - working directory representa o estado atual dos arquivos no repositório. 
+ - Podemos utilizar o comando git add para adicioná-los ao index, ou staging area, que representa uma visão 
+preliminar das modificações que queremos definir para nosso projeto, comparando essas ao HEAD, o último passo 
+completo do nosso projeto, que serve de referência para comparação do trabalho com o working directory.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para armezar os projetos online utlizaremos o gitHub. O gitHub é uma plataforma online para armazenar repositórios do git,
+desta forma, é possível gerenciar o projeto, usuários, repositórios entre outras coisas.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para vermos quantso commits já foram realizados (o histórico) em um repsitório usamos o seguinte comando.
+ - git log
+Para ver os detalhes como o código modificado, etc.
+ - git log -p
+Para ver os gráficos dos nossos branchs, ou seja, saber que ligações eles tem com outros branchs, usamos o seguinte comando.
+- git logg --graph
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para saber com mais detalhes quais arquivos foram excluidos, adicionados ou alterados nos commits usamos no seguinte comando.
+ - git whatchanged
+ - Para ver o que foi alterado em cada arquivo usamos o seguinte comando.
+ - git whatchanged -p
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para adicionarmos um projeto no git em um repositório novo devemos fazer os seguintes passos.
+
+- No site do gitHub na página principal clicar em "New Repository"
+- Coloca um nome para seu repositório e clica em "Create repository"
+- Par podermos sincronizar nosso repositório local do git com o repositório online da plataforma gitHub usamos o 
+seguinte comando para realizar a tarefa. 
+ - git remote add origin "https://github.com/AlefeChorna/nome_repositorio.git"
+ - git remote add origin https://github.com/AlefeChorna/curso-git-alura.git
+- A opção 'origin' indica que estamos mandando para a origem do nosso repositório, ou seja, o origin
+é o apilido do repositório (neste sentido origin = "https://github.com/AlefeChorna/curso-git-alura.git"). O apelido pode ser qualquer nome.
+O apelido origin é muito utilizado por todos (por convenção). Depois que adicinar uma vez o repositório, basta digitar 'git remote' e ele mostrara o apelido
+do caminho do repositório que no nosso caso é "origin", mas poderia ser origem, destino, repositorio, qualquer nome desde que seja configurado
+antes para então poder ser utilizado.
+ - git remote (mosrtra o apelido do repositório que estamos no momento).
+
+Para empurrar (push) o projeto para o repositório online, ou seja, enviar ele para que não fique somente em nossa máquina usamos o seguinte comando.
+ - git push origin master
+ - O comando acima empurra o nosso projeto para o nosso repositório 'origin' (alias configurado através do git remote) direto para o branch master (Por padrão 
+quando criamos um novo repositório o git cria um branch para que possamos mandar nossas alterações, este branch é chamado de 'master'. O branch master em 
+poucas palavras é o branch de produção, ou seja, tudo que é para ser definitivo no seu código é mandado para este branch. Quando temos alterações que ainda não são
+definitivas criamos um novo branch e caso estas alerações sejam definitivas através de pull request mandamos as mesmas para o branch 'master' que recebe todas as 
+alterações e distribui para todos os usuários que utilizam o repositório).
+- Apóes este passo a passo basta ir no site do github e verificar as alterações.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+O passo inverso seria pegar um repositório do git e utilizar na nossa máquina.
+- Para pegar um repositório basta ir no repositório que queremos copiar no gitHub e clicar na opção "Clone or Download"
+- Se escolher Download você ira baixar um arquivo zip com uma pasta que nada mais é que seu repositório.
+- Caso escolha clonar, ou seja, baixar via URL (Através da linha de comando), usamos o seguinte comando.
+- git clone https://github.com/AlefeChorna/nome_repositorio.git
+- git clone https://github.com/AlefeChorna/curso-git-alura.git
+ - E pronto, com o projeto em mãos é só colocar o arquivo em local seu de segurança e começar a utilizar.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para adicionar um novo colaborador no git fazemos o seguinte passso a passo
+ - No site do gitHub clicamos no repositório que queremos adicionar um novo usuário clicamos no botão "Settings" (Está próximo do cabeçalho da página)
+ - Após carregar, clicamos em "Collaborators" (Menu laterar no lado esquerdo)
+ - Só adicionar o nome do usuário e clicar eno botão "Add collaborator" (Para adicionar um usuário o mesmo deve ter conta no gitHub)
+ - Para excluir basta clicar no "x" que aparece ao lado do usuário já adicionado.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para verificar os branchs que estão criados no repositório local usamos o seguinte comando.
+- git branch
+
+Para criar uma nova branch usamos o seguinte comando
+- git branch nome_branch
+- git branch design ou git branch 1506
+
+Para mudar de uma branch para outra, usamos o seguinte comando
+- git checkout nome_branch
+- git checkout design
+
+Para mandar as alterações para o diretório master, usamos o seguinte comando
+- O parâmetro '-u' indica pro git que o branch que estamos commitando deve ficar igual ao branch master, ou seja, as
+alterações que foram feitas nestes branch devem estar nos dois branchs (a nossa branch local não sabe qual é a branch 
+remota à qual ela se refere na hora do push, quem informa isso para ela é o comando '-u').
+- git push -u origin nome_branch
+- git push -u origin design
+
+Quando noso reposi´torio esta desatualizado ou diferente do diretório master, usamos o seguinte comando para
+deixar o nosso repositório atualizado.
+- git pull master (ou o nome de outro repositório que queira sincronizar os arquivos).
+
+Caso queiramos pegar/copiar uma branch de outro projeto (de outro usuário ou até mesma seu, porém, sendo de outro branch (seja este de produção homologação, etc...)) 
+para fazermos, seja porque alguem da equipe ficou doente ou porque deseja utilizar esta branch no momento, usamos o seguinte comando.
+- git branch -t nome_branch_queSeraCriado alias_repositorio/nome_branch_queSeraCopiada
+- git branch -t design-1 origin/design
+- Se a branch já está criada (Criamos uma branch com o mesmo nome da copiada, ou seja, o nome da branch é 'design') precisamos apenas copiar o conteudo.
+- git branch -t origin/design
+
+Para deletar um branch usamos o seguinte comando
+- git branch -d nome_branch
+- git branch -d design
+
+Para listar todos os branchs remotos que temos em nosso repositório local usamos o seguinte comando
+- git branch -r
+
+Para listar todos os branchs remotos e locais que temos em nosso repositório usamos o seguinte comando
+- git branch -a
+
+Para criar uma nova branch e fazer checkout na nela ao mesmo tempo usamos o seguinte comando
+- git checkout -b nome_novaBranch
+- git checkout -b desenvolvimento
+
+Num repositório remoto, as alterações são realizadas, geralmente, por mais de uma pessoa ao mesmo tempo.
+Esse comando vai até o projeto remoto e pega todos os dados que você ainda não tem. Depois de fazer isso, 
+você deve ter referências para todos os branches desse remoto, onde você pode fazer o merge ou inspecionar a qualquer momento.
+Para saber se foram criadas branches novas no repositório remoto usamos o seguinte comando.
+- git fetch alias_repositorio
+- git fetch origin
+
+Para mais dados sobre branchs e outros comandos do git, acesse a seguinte URL:
+   - "https://git-scm.com/book/pt-br/v1/Git-Essencial-Trabalhando-com-Remotos"
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Quando o código apresenta conflito por que duas pessoas mecheram no mesmo lugar em seus branchs, usamos o seguinte comando para corrigir o problema.
+- git pull (atualiza o repositório dele com o repositório remoto)
+
+Caso os usuários tenham mechidos na mesma linha ou em lugares próximos o 'git pull' vai falhar, desta forma, é necessário corrigir o problema
+através da seu editor de texto (nestes casos o git mostra pro editor onde esta acontecendo o erro).
+
+Para trazer os commits de uma branch para outra usamos o seguinte comando
+- git merge nome_branch
+- git merge develop
+
+Após realizar o merge, devemos fazer push para que os commits realizados possam estar no master e assim todos os colcaboradores do projeto
+possam estar com seus repositórios atualizados.
+- git push alias_repositorio nome_branchMaster
+- git push origin master
+
+Para atualizar uma branch sem utilizar um merge, ou seja, atualizar uma branch local com as alterações do master sem ter que fazer um pull (Atualizar uma branch sem
+estar checkado nela). Este comando evita muitos conflitos em código, pois, antes de commitar já temos nosso fonte atualizado com o do master.
+- git rebase nome_branchMaster nome_branchQueSeraAtualizada
+- git rebase master develop
+
+Quais as funções, respectivamente, das opções --continue, --skip e --abort do comando git rebase?
+- git rebase --continue deve ser utilizado após a resolução manual de conflitos.
+- git rebase --skip faz com que suas alterações sejam descartadas
+- git rebase --abort volta atrás em todo o processo de rebase
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Quando queremos reverter um arquivo que já foi commitado, porém que não foi feito o push, usamos o seguinte comando.
+- git reset HEAD
+- Este comando volta o branch como estava entes de ser comitado.
+- Caso já tenhamos comitado, cada commit gera um ID que pode ser visto pelo comando 'git log', para reverter este push usamos oseguinte comando. 
+Porém este comando reverte tud até o id solicitado, ou seja, tem o mesmo principio de um ponto de restauração, assim, as alterações que existiam
+a partir dele não existiram mais.
+- git reset hash_push
+- git reset 4c6c1cbc5c710a9b258e50e3494f3160bb870433 
+- Caso não queiramos reverter tudo o processo e sim somente um determinado push usamos o seguinte comando.
+- git revert hash_push
+- git revert 4c6c1cbc5c710a9b258e50e3494f3160bb870433
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+As vezes temos alterações que não queremos commitar na hora, então salvamos ela em um lugar temporário. Para fazer isto usamos o seguinte comando.
+- git stash
+- Para verificar se tem algum arquivo sendo salvo temporariamente o stash usamos o seguinte comando.
+- git stash list
+- Para pegar este arquivo temporário que está no stash usmos o seguinte comando.
+- git stash apply nome_stash (O nome do stash pode ser verificado conforme mostra o comando acima)
+- git stash apply stash@{0}
+- Caso queiramos pegar o último que voi enviado para o Stash usamos o seguinte comando.
+- git stash pop
+- Para remover um stash da memória usamos o seguinte comando.
+- git stash drop
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+- As vezes queremos encontrar um commit mas não sabemos qual é, ou seja, só temos 'possiveis candidatos'. Para não procurar um a um na mão usamos 
+o seuinte comando
+- git bisect start (Inicia a ferramenta bisect para que possamos verificar o commit que queremos encontrar)
+- git bisect bad commit_atual (Primeiro devemos informar um commit que temos certeza que não será o que procuramos)
+- git bisect bad HEAD (O HEAD indica o branch atual, caso não queiramos o atual é só passar o hash do commit que não se encaixa na pesquisa)
+- git bisect good commit_possivelCandidato (Informamos um commit que suspeitamos que seja bom ou esteja próximo do que queiramos)
+- git bisect good aff63ddff3a936ed4f96ece3043417fa2a28a96a
+- Sempre que damos este comando verificamos na IDE se o commit que a pesquisa retormou é o que procuramos, caso não seja, devemos dizer se o mesmo
+é bom ou ruim para que a ferramente consiga encontrar (Para dize que o resultado da pesquisa é bom: 'git commit good' e para mal: 'git commit bad'). Repita estes
+comandos até a ferramenta encontrar o commit que esteja procurando. 
+- Para sair do Bisect usamos o seguinte comando.
+- git bisect reset
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+- Sempre que quisermos carregar as alterações existentes no repositório, devemos executar o comando:
+ - git fetch alias_repositorio 
+ - git fetch original 
+- O comando fetch apenas realizará o download das novas alterações que não temos ainda em nosso repositório, mas não vai aplicá-las ainda.
+- Para aplicar as alterações, devemos indicar, através do comando git merge, que queremos trazer as alterações do repositório original 
+que estão na branch master. Dessa forma, teremos:
+- git merge alias_repositorio/nome_branch_queQueremosMesclar
+- git merge original/master
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para editarmos os comando do git usamos o seguinte comando para que possamos auterala-los.
+- vim ~/.gitconfig
+- Adicionamos na próxima linha em branco os seguintes comandos
+- Lembrando: para poder editar arquivos no VIM primeiro pressionamos a tecla 'i' para então podermos alterar o arquivo.
+---------------
+
+[alias]
+	st - status (e assim pode colocar quantos comando quiser)
+
+---------
+
+- para fechar o vim e salvar a edição usamos os seguinte comandos
+- ESC, ':' 'wq', ENTER
+- Para sair sem salvar
+- ESC, ':' 'q', ENTER
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Para ver a diferença entre um repositório e  outro ou um branch e outro usamos o seguinte comando:
+- git diff alias_repositorio_QueSeraVerificado/nome_branch
+- git diff originJoao/master ou.....
+- git diff branch_QueSeraVerificado
+- git diff teste ou git diff release
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+O Github te permite fazer um fork de qualquer projeto aberto ao público, que copia o projeto para a sua conta, com histórico, e te permite 
+abrir um pull request. Porém, às vezes você só quer acompanhar o andamento do projeto e não contribuir para seu desenvolvimento.
+ - Ao ativar o watch, o Github te notifica a cada atividade que ocorre no repositório, te permitindo acompanhar praticamente em tempo 
+real o andamento do projeto.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+Quando temos varíos commits em um branch e queremos rezlizar o push somente em um usamos o seguinte passo a passo.
+- Primeiro saimos do branch que estamos e vamos para o branch que queremos puchar o commit.
+- Segundo digitamos o seguinte comando:
+	- git cherry-pich hash_commit
+	- git cherry-pich 2f02b44
+	
+As vezes podemos puchar um commit que no mesmo lugar que teve alteração no mesmo teve alteração em outros que ainda não foram
+puchados para o repositório pai. Desta forma, realiza o comando conforme mostrado acima e corrige os conflitos no fonte que seram
+mostrados pela sua IDE. Assim, evite puchar commits que dependem de outras alterações.
+	Este é um bom exemplo de que fazer muitos commits pequenos em oposição a fazer um único grande commit é uma grande vantagem e 
+uma boa prática. O cherry-pick dificilmente será usado quando as alterações todas ficam aglomeradas em um grande commit.
+	Mas é bom ter cuidado ao usar o cherry-pick, tendo certeza de que se está recuperando o commit correto e que ele contém somente 
+as alterações que você precisa. Caso contrário, tomar o cuidado de usar a opção -n para não criar o commit imediatamente é uma 
+boa prática, pois ainda pode-se corrigir o código.
+
+-------------------------------------------------------------------------- -----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

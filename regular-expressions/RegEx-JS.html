@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var alvo = '11a22a35a55';
+        var exp  = new RegExp('(\\d\\d)|(\\w)', 'g');
+        var resultado = exp.exec(alvo);
+        //  para ver se um texto existe, usamos 'test' que retorno true ou false
+        console.log(exp.test(alvo)); // Neste caso true
+
+        while (resultado = exp.exec(alvo)) {
+            console.log(resultado);
+            // para ver a posição do ultimo valor da pesuida utiliza se lastIndex
+            console.log(exp.lastIndex);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

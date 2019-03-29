@@ -1,0 +1,129 @@
+Expressões Regulares
+
+João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+Maria Fulana, 98765432100,11 de Abril de 1995,(11) 933339871,Rua Vergueiro,3185,04101-300,São Paulo
+denise teste, 987.654.321.00,28 de Dezembro de 1991,(31)45562712,SCS Qd. 8 Bl. B-50,11,70333-900,Rio Grande
+
+. - qualquer valor ou caracter
+^ - Define que apartir deste sinal começa a frase ou texto (Somente o inicio da frase e não de uma palavra)
+$ - Indica aonde acaba a frase o texto (Somente o texto e não uma palavra em especifico)
+? - zero ou uma vez.
+* - zero ou mais vezes.
++ - uma ou mais vezes.
+() - separam os valores por grupo, otimos para se trabalhar com data
+\b - não pode teer um caracter antes ou depois da palavra (\balefe\b),
+se estiver alguma palavra junta com o nome não aprecera, só sera exibido
+se a palavra 'alefe' estiver sozinha
+\s+ - um ou mais espaços
+{n} - exatamente n vezes.
+{n,} - no mínimo n vezes.
+{n,m} - no mínimo n vezes, no máximo m vezes
+\w significa word char e é uma atalho para [A-Za-z0-9_]
+\d - todos os digitos de 0 a 9
+para especificar quais quer utilizar: [123] = so pode 1,2 ou 3 e nada mais
+Non-Capturing group - (?:de\s+) (não deve devolver o grupo formado pela preposição de e por um \s)
+Quantifier - [a-z]? (a classe deve ocorrer zero ou uma vez)
+Através do ?:, dizemos que não queremos ver um grupo na resposta
+
+--------- GRUPOS ------
+(\w+) - grupo de word chars
+(\w+)? - grupo de word chars opcional de uma ou nenhuma vez
+(?:\w+) - non-capturing group, ou seja, grupo não deve estar na resposta
+
+-------------------------------------------------------------------
+
+- Para seguir uma palavra ate o final e não ter que determinar o tamnaho dela
+utiliza-se o '+', por ex:
+--- Alefe, Ze, Antonio ---
+Resposta: [A-Z][a-z]+ ou [A-Za-z]+
+
+Classes de letras
+Para descrever o mês, devemos usar uma nova classe de letras, seguem alguns exemplos:
+
+[A-Z] significa de A até Z, sempre maiúscula.
+[a-z] significa de a até z, sempre minúscula,
+[A-Za-z] significa A-Z ou a-z.
+[abc] significa a, b ou c
+
+Sabendo disso, podemos combinar a classe com um quantifier.
+Vamos começar com uma letra maiúscula ,seguida por uma quantidade
+de letras minúsculas, adicionando ainda a letra ç (do mês março)
+
+[A-Z][a-zç]+
+
+Para achar uma data da seguinte forma:
+
+--- 28 de Dezembro ---
+
+usa se:
+    [0123]?\d\s+de\s+[A-Z][a-zç]{1,8}
+
+--- Para encontrar a data completa ---
+Por ex: 28 de Dezembro de 1996
+
+Usa se:
+    [0123]?\d\s+de\s+[A-Z][a-zç]{1,8}\s+de\s+\d{4}
+
+Agora precisamos garantir que o nosso usuário preencha um horário
+que siga esse padrão: 19h32min16s.
+
+Resposta: \d{2}h\d{2}min\d{2}s
+
+Pode ser mais generico: \d{2}[A-Za-z]\d{2}[A-Za-z]{3}\d{2}[A-Za-z]
+ou pode ser mais especifico, aceitando somente os caracteres conforme
+solicitado: [0-9]{2}[A-Za-z][0-9]{2}[A-Za-z]{3}[0-9]{2}[A-Za-z]
+
+Para tratar uma username que deve comecar com uma letra vogal o restante
+pode ser qualquer caracter e ter no minimo um tamanho de 6 caracter e no
+maximo 10.
+Resposta: [a-zA-Z][a-zA-Z0-9]{5,9}
+
+Entendendo a Expressão: ^file.+\.html$
+O sinal '^' indica que é o inicio da frase.
+O '.' indica que aceita qualquer caracter em diante
+O '+' indica que pode se repetir uma ou mais vezes
+O '\' caracter de escape
+O '.html' especifica a ultima frase do texto
+O '$' indica que o texto acabe no caracter anterior a ele
+
+RegEx para CPF: ^\d{3}\.\d{3}\.\d{3}-\d{2}$
+
+
+Qual das regex abaixo capturaria exatamente as strings de data
+que seguem o modelo: Data: dia/mes/ano ou Data:dia/mes/ano?
+
+Resposta: A regex para pegar data é bem simples, vocês já sabem:
+[0-9]{2}\/[0-9]{2}\/[0-9]{4}.
+    Mas também queremos a expressão Data: e um espaço (por exemplo: \s)
+entre eles, que é opcional, ou seja, temos que utilizar o i nterrogação (?).
+Basta adicioná-los à regex acima: Data:\s?[0-9]{2}\/[0-9]{2}\/[0-9]{4}.
+    Mas como queremos exatamente essa string, precisamos colocar
+as âncoras ^ e $, no início e fim da string, respectivamente:
+^Data:[\s]?[0-9]{2}\/[0-9]{2}\/[0-9]{4}$
+
+Para capturar uma data por grupo : Ex: dia - mes - ano
+Usa se: ([0123]?\d)\s+de\s+([A-Z][a-zç]{1,8})\s+de\s+([12]\d{3})
+
+
+Para separar as vogais entre numeros: Ex: Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O
+Resposta: Z\d+(\w)
+
+Capturando o texto de uma ancora HTML:
+<h1 class="text-left">Expressões regulares</h1>
+Resposta: <h1.+?>[\s+\wõç]+</h1>
+O '<h1' inicio da ancora HTML
+O '.+' qualquer caracter uma ou mais vezes
+O '?' nesta parte tem a função de fazer a pesquisa para no próximo caracter
+O '>' termina a ancora do H1 e é a parte onde termina depois do '?'
+O '([\s+\wõç]+)' (grupo que tem o texto do H!) tem o espaçamento com '\s' e os
+qualquer numero ou letra de '\s' mais os caracteres especiais de portugues que
+o software RegEx não reconhece
+O '</h1>' fecha a ancora do H1
+
+Para não ter que adivinhar se o developer fea o h1 sem misturar com um h2,
+fazemos da seguinte forma:
+<(h1|h2).+?>([\w\sõãí.]+)<\/\1>
+No grupo 'h1|h2)' temos o '|' este indica a função (ou é uma ou a outra)
+No final que fecha o H1 ou H2 etmos '<\/\1>', o sinal '/\1' indica que estamos
+pegando o primeiro grupo, pois os grupos trabalham como arrays, desta forma
+e só pegar a posição e isar aonde for necessário
