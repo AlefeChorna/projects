@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Flex Box</title>
+    <style>
+        div {
+            border: 1px solid green;
+        }
+        section {
+            background: #f1f1f1;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="text-center display-4 my-2">Flex Box</h1>
+<hr>
+<aside class="container">
+    <section class="d-flex flex-row">
+        <div class="p-4">Flex box Um</div>
+        <div class="p-4">Flex box Dois</div>
+        <div class="p-4">Flex box Três</div>
+    </section>
+    <hr>
+    <section class="d-flex flex-column">
+        <div class="p-4">Flex box Um</div>
+        <div class="p-4">Flex box Dois</div>
+        <div class="p-4">Flex box Três</div>
+    </section>
+    <hr>
+    <section class="d-flex flex-row">
+        <div class="p-4 align-self-start">Flex box Um Start</div>
+        <div class="p-4 align-self-center">Flex box Dois Center</div>
+        <div class="p-4 align-self-end">Flex box Três End</div>
+        <div class="p-4 align-self-baseline">Flex box Quatro Baseline</div>
+        <div class="p-4 align-self-stretch">Flex box Cinco Stretch</div>
+    </section>
+</aside>
+<br>
+<br>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>

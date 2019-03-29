@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Alinhamento Offset!</title>
+</head>
+<body>
+<h1 class="text-center display-4 my-2">Alinhamento Offset</h1>
+<hr>
+<div class="container-fluid bg-warning" style="margin-top: 30px">
+    <!-- align-{breakpoint}-{value}-->
+    <!-- Ex: align-self-start -->
+    <!--    ouuuu   -->
+    <!-- align-{breakpoint}-{startPosition}-{value}-->
+    <!-- Ex: align-self-sm-start -->
+    <section class="row" style="height: 100px">
+        <div class="col bg-secondary align-self-lg-start">Column 1</div>
+        <div class="col bg-info align-self-md-center">Column 2</div>
+        <div class="col bg-success align-self-sm-end">Column 3</div>
+    </section>
+    <hr>
+    <section class="row justify-content-end" style="height: 100px">
+        <div class="col-4 bg-secondary">Column 1</div>
+        <div class="col-4 bg-success">Column 2</div>
+    </section>
+    <hr>
+    <section class="row justify-content-start" style="height: 100px">
+        <div class="col-4 bg-secondary">Column 1</div>
+        <div class="col-4 bg-success">Column 2</div>
+    </section>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>

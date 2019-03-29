@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <style>
+        .myDiv {
+            width: 100%;
+            height: 80px;
+        }
+
+        .myRow {
+            width: 100px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<div class="myDiv bg-primary"></div>
+<hr>
+<div class="container">
+    <div class="myDiv bg-primary">a classe container tem as laterais maiores</div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="myDiv bg-primary">Container fluid tem as laterais menores</div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="myRow col bg-primary">
+            Quando for utilizar layouts basedas em colunas estes devem estar dentro
+            de uma DIV com a class row
+        </div>
+        <div class="myRow col bg-success"></div>
+        <div class="myRow col bg-danger"></div>
+    </div>
+    <div class="row">
+        <div class="myRow col bg-warning"></div>
+        <div class="myRow col btn-info"></div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>

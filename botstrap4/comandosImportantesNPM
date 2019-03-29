@@ -1,0 +1,13 @@
+Para instalar as depedencias de um package.json que
+ja existe basta digitar:
+
+-> npm i
+
+Comando NPM para instalar o Boostrap
+
+-> npm install boostrap
+
+O Bootstrap 4 tem duas depêndencias: O jQuery e o Popper.
+Para instalar o jQuery via NPM
+
+-> npm install jquery
