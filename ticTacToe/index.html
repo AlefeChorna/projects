@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="players">
+            <h1 class="player-one">Jogador 1 usa a opção <b>X</b></h1>
+            <h1 class="player-two">Jogador 2 usa a opção <b>O</b></h1>
+        </div>
+        <div class='game'></div>
+        <div class="winner">
+            <h1 class="titleWinner"></h1>
+            <button type="button" onclick="restartGame()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="js/tic_tac_toe.js"></script>
+    <script>
+        ticTacToe.init(document.querySelector('.game'));
+        ticTacToe.start();
+        
+        function restartGame() {
+            document.querySelector('.winner').style.display = "none";
+            ticTacToe.start();
+        }
+    </script>
+</body>
+</html>
