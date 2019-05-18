@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity 
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import styles from './styles';
 
@@ -16,7 +17,11 @@ export default class Login extends Component {
     password: '',
   }
 
-  checkUser = () => this.props.navigation.navigate('Main')
+  checkUser = async () => {
+    await AsyncStorage.setItem('@MyBus:username', this.state.username);
+
+    this.props.navigation.navigate('Main');
+  }
 
   render() {
     const { username, password, } = this.state;

@@ -10,7 +10,7 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    const username = await AsyncStorage.getItem('@MyBuss:username');
+    const username = await AsyncStorage.getItem('@MyBus:username');
 
     this.setState({
       userChecked: true,

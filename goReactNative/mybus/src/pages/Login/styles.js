@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+import { colors } from '../../styles';
+
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#263238'
+        backgroundColor: colors.primary
     },
     imageLogo: {
         width: 120,
@@ -15,12 +17,12 @@ export const styles = StyleSheet.create({
         marginTop: 30,
     },
     labelInput: {
-        color: '#607D8B',
+        color: colors.secundary,
         fontWeight: 'bold'
     },
     input: {
         flex: 1,
-        color: '#607D8B'
+        color: colors.secundary
     },
     containerInput: {
         flexDirection: 'row',
@@ -40,7 +42,7 @@ export const styles = StyleSheet.create({
         borderRadius: 25,
     },
     textButton: {
-        color: '#263238',
+        color: colors.primary,
         fontWeight: 'bold',
         fontSize: 18,
     }
