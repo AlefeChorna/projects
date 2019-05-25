@@ -1,8 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
+import { 
+    StyleSheet, 
+    Text, 
+    View,
+    Animated, 
+    TouchableOpacity,
+    Dimensions 
+} from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
-export default function Item() {
+const { width } = Dimensions.get('window');
+
+export default function Item(_prProps) {
     let offset = 0;
     const translateX = new Animated.Value(0);
 
@@ -24,7 +33,7 @@ export default function Item() {
 
             offset += translationX;
 
-            console.log('event.nativeEvent: ',  event.nativeEvent);
+            //console.log('event.nativeEvent: ',  event.nativeEvent);
             if (
                 translationX < -60 || 
                 (!opened && Math.abs(velocityX) > 1200 && translationX < 0)
@@ -56,7 +65,7 @@ export default function Item() {
     }
 
     return (
-        <View style={styles.containerItem}>
+        <View key={_prProps.task.id} style={styles.containerItem}>
             <View style={styles.viewUnder}>
                 <Text style={styles.emptyContent}></Text>
                 <TouchableOpacity style={styles.buttonEdit}>
@@ -80,7 +89,7 @@ export default function Item() {
                         }),
                     }],
                 }}>
-                    <Text>View Above</Text>
+                    <Text style={styles.buttonText}>{_prProps.task.title}</Text>
                 </Animated.View>
             </PanGestureHandler>
             <View style={styles.divider} />
@@ -91,7 +100,7 @@ export default function Item() {
 const styles = StyleSheet.create({
     containerItem: {
         height: 50,
-        width: '100%',
+        width: width,
     },
     divider: {
         width: '100%',
@@ -100,13 +109,15 @@ const styles = StyleSheet.create({
     },
     viewUnder: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     viewAbove: {
         height: 50,
         width: '100%',
         backgroundColor: 'green',
         position: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     emptyContent: {
         flex: 1,
