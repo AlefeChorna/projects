@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     Dimensions 
 } from 'react-native';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import { PanGestureHandler, State, Directions } from 'react-native-gesture-handler';
 
 const { width } = Dimensions.get('window');
 
@@ -33,7 +33,7 @@ export default function Item(_prProps) {
 
             offset += translationX;
 
-            //console.log('event.nativeEvent: ',  event.nativeEvent);
+            console.log('event.nativeEvent: ',  event.nativeEvent);
             if (
                 translationX < -60 || 
                 (!opened && Math.abs(velocityX) > 1200 && translationX < 0)

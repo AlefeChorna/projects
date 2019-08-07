@@ -32,11 +32,13 @@ export default class App extends Component {
   
       return (
         <FlatList
-          data={data}
-          keyExtractor={item => String(item.id)}
-          renderItem={this.renderListItem}
-          onRefresh={() => {}}
-          refreshing={refreshing}
+            style={{height:850, position: 'absolute', width: '100%'}}
+            data={data}
+            keyExtractor={item => String(item.id)}
+            renderItem={this.renderListItem}
+            onRefresh={() => {}}
+            onScrollBeginDrag={() => console.log('onScrollBeginDrag') }
+            refreshing={refreshing}
         />
       );
     }
